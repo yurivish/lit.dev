@@ -11,7 +11,6 @@ import {live} from 'lit/directives/live.js';
 import type {Drawer} from '@material/mwc-drawer';
 import {AgloliaSearchController} from './algolia-search-controller.js';
 import {classMap} from 'lit/directives/class-map.js';
-import {searchIcon} from '../icons/search-icon.js';
 import './litdev-search-option.js';
 import type {LitdevSearchOption} from './litdev-search-option.js';
 
@@ -211,7 +210,6 @@ export class LitDevSearch extends LitElement {
           @input=${this._onInput}
           @keydown=${this._onKeydown}
         />
-        ${searchIcon}
         <button @click=${() => this.dispatchEvent(new Event('close'))}>
           Cancel
         </button>
@@ -409,7 +407,7 @@ export class LitDevSearch extends LitElement {
     :host {
       --_cancel-button-width: 70px;
       --_input-height: 50px;
-      --_input-padding: 12px;
+      --_input-padding: 4px;
       --_input-border-width: 1px;
       --_input-border-width-focus: 2px;
       --_items-margin-block-start: 16px;
@@ -425,19 +423,6 @@ export class LitDevSearch extends LitElement {
 
     #root button {
       display: none;
-    }
-
-    svg {
-      position: absolute;
-      inset-inline-end: var(--_input-padding);
-      inset-block-start: 0;
-      /* If you press the search icon you will focus the input behind it. */
-      pointer-events: none;
-      height: 100%;
-      aspect-ratio: 1/1;
-
-      transition: opacity 1s;
-      color: var(--color-blue);
     }
 
     input:focus ~ svg {
@@ -481,27 +466,25 @@ export class LitDevSearch extends LitElement {
     input {
       width: 100%;
       height: 100%;
-      margin: calc(
-        var(--_input-border-width-focus) - var(--_input-border-width)
-      );
       padding: var(--_input-padding);
       box-sizing: border-box;
       background-color: transparent;
       color: currentColor;
+      font-size: 1.5em;
       font-family: inherit;
-      font-size: inherit;
       font-weight: inherit;
-      border: solid var(--_input-border-width) var(--color-blue);
+      border-style: solid;
+      border-color: var(--color-blue);
+      border-width: 0 0 var(--_input-border-width) 0;
       outline: none;
     }
 
     input:focus {
-      border-width: var(--_input-border-width-focus);
-      margin: 0;
-    }
-
-    input::placeholder {
-      color: currentColor;
+      border-width: 0 0 var(--_input-border-width-focus) 0;
+      padding-block-end: calc(
+        var(--_input-padding) -
+          (var(--_input-border-width-focus) - var(--_input-border-width))
+      );
     }
 
     .group {

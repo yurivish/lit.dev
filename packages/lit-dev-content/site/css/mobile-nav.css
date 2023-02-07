@@ -14,6 +14,25 @@ mwc-drawer:not(:defined) {
   margin-top: 10px;
 }
 
+#mobileDrawer .icons {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+#mobileDrawer .icons li {
+  margin-top: 0px;
+  padding-inline: 8px;
+}
+
+#mobileDrawer .icons li:first-of-type {
+  padding-inline-start: 0px;
+}
+
+#mobileDrawer .icons li:last-of-type {
+  padding-inline-end: 0px;
+}
+
 #mobileDrawer a {
   color: inherit;
 }

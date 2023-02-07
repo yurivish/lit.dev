@@ -34,7 +34,7 @@
   vertical-align: middle;
 }
 
-#desktopNav {
+#desktopNav, #desktopNav ol {
   display: flex;
   align-items: center;
   list-style: none;
@@ -42,13 +42,18 @@
   margin: 0;
 }
 
-#desktopNav > .navItem > a,
-#desktopNav > .navItem > litdev-search-modal {
+#desktopNav .navItem a,
+#desktopNav .navItem litdev-search-modal {
   color: #6f6f6f;
   font-weight: 600;
   padding: 0.3em 0.5em;
   margin-left: 0.5em;
   font-size: 0.9em;
+}
+
+
+#desktopNav .navItem litdev-search-modal {
+  color: var(--color-blue);
 }
 
 @supports not selector(:modal) {
@@ -57,8 +62,8 @@
   }
 }
 
-#desktopNav > .navItem > *:hover,
-#desktopNav > .navItem.active > a {
+#desktopNav .navItem a:hover,
+#desktopNav .navItem.active a {
   color: var(--color-blue);
 }
 
